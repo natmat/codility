@@ -1,11 +1,12 @@
-package Codility;
+package codility;
 
 public class BinaryGap {
-	public static void main (String[] args) {
-		System.out.println("Solution=" + solution(10));
+	public static void main (String[] args) {	
+		BinaryGap bg = new BinaryGap();
+		System.out.println("Solution=" + bg.solution(0b1010)); //N=10
 	}
 	
-    public static int solution(int N) {
+    public int solution(int N) {
         int gap = 0;
         int bg = 0;
         boolean start = false;
