@@ -9,6 +9,7 @@ public class CyclicRotationTest {
 	@Test
 	public void testExample() {
 		CyclicRotation cr = new CyclicRotation();
-		assertArrayEquals([1, 2,3,4,5], cr.solution([1, 2,3,4,5]), 0);
+		int[] expected = {5,1,2,3,4};
+		assertArrayEquals(expected, cr.solution(new int[] {1,2,3,4,5}, 1));
 	}
 }
