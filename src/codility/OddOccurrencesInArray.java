@@ -2,7 +2,7 @@ package codility;
 
 public class OddOccurrencesInArray {
 
-	public static void main (String[] args) {	
+	public static void main (String[] args) {
 		OddOccurrencesInArray oddOccurencesInArray = new OddOccurrencesInArray();
 		int[] data = new int[] {1,1,2,2,3};
 		System.out.println("Solution=" + oddOccurencesInArray.solution(data)); //N=10
