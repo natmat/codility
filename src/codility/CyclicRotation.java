@@ -31,22 +31,3 @@ public class CyclicRotation {
 		A[j] = tmp;
 	}
 }
-
-/*
-extreme_empty 
-empty array ✔OK
-▶ single 
-one element, 0 <= K <= 5 ✔OK
-▶ double 
-two elements, K <= N ✔OK
-▶ small1 
-small functional tests, K < N ✔OK
-▶ small2 
-small functional tests, K >= N ✔OK
-▶ small_random_all_rotations 
-small random sequence, all rotations, N = 15 ✔OK
-▶ medium_random 
-medium random sequence, N = 100 ✔OK
-▶ maximal 
-maximal N and K
-*/
