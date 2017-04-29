@@ -6,7 +6,7 @@ public class BinaryGap {
 		System.out.println("Solution=" + bg.solution(0b1010)); //N=10
 	}
 	
-    public int solution(int N) {
+    public int solution(int N) { 
         int gap = 0;
         int bg = 0;
         boolean start = false;

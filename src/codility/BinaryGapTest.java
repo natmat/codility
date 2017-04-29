@@ -7,7 +7,7 @@ import org.junit.Test;
 public class BinaryGapTest {
 
 	@Test
-	public void testSolution1() {
+	public void testSolution1() { 
 		BinaryGap bg = new BinaryGap();
 		assertEquals(0, bg.solution(0b1));
 	}
