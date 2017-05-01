@@ -3,7 +3,7 @@ package codility;
 public class FrogJmp {
 
 	public static void main(String[] args) {
-		FrogJmp.solution(1,2,3);
+		System.out.println("FrogJmp=" + FrogJmp.solution(0,10,3));
 	}
 
 	public static int solution(int X, int Y, int D) {
