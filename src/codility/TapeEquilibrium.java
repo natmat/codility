@@ -8,22 +8,24 @@ public class TapeEquilibrium {
 	}
 
 	public int solution(int[] A) {
-		int sum = 0;
+		long sum = 0;
 		for (int i : A) {
 			sum += i;
 		}
-		int sumL = A[0];
-		int sumR = sum - sumL;
-		int min = Math.abs(sumL - sumR);
-
-		for (int p = 1 ; p < A.length-1 ; p++) {
-			sumL += A[p];
-			sumR -= A[p];
-			int diff = Math.abs(sumL - sumR);
+		int min = (int)Math.abs(2*A[0] - sum);
+		long sumL = 0;
+		long sumR = sum;
+		int n = 1;
+		for (int i : A) {
+			sumL += i;
+			sumR -= i;
+			int diff = (int)Math.abs(sumL - sumR);
 			if (min > diff) {
 				min = diff;
 			}
-			//		 			System.out.println("L="+sumL+",sumR="+sumR+",diff="+diff+",min="+min);
+			//	 			System.out.println("L="+sumL+",sumR="+sumR+",diff="+diff+",min="+min);
+			if (n == A.length-1) { break; }
+			n++;
 		}
 		return(min);
 	}
