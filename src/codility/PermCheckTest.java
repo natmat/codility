@@ -26,4 +26,19 @@ public class PermCheckTest {
 		int[] actual = new int[] {1,4,1};
 		assertEquals(0, pc.solution(actual));
 	}
+
+	@Test
+	public void test4() {
+		PermCheck pc = new PermCheck();
+		int[] actual = new int[] {1};
+		assertEquals(1, pc.solution(actual));
+	}
+
+	@Test
+	public void test5() {
+		PermCheck pc = new PermCheck();
+		int[] actual = new int[] {2};
+		assertEquals(0, pc.solution(actual));
+	}
+
 }
