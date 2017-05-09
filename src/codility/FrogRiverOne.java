@@ -9,17 +9,13 @@ public class FrogRiverOne {
 	}
 
 	public int solution(int X, int[] A) {
-		int[] leaves = new int[X+1];
-		long total = X*(X+1)/2;
+		boolean[] leaves = new boolean[X+1];
+		int steps = X;
 		for (int i = 0 ; i < A.length ; i++) {
-			int leaf = A[i];
-			if ((leaf < 1) || (leaf > X)) {
-				break;
-			}
-			if (leaves[leaf] == 0) {
-				leaves[leaf] = leaf;
-				total -= leaf;
-				if (0 == total) {
+			if (!leaves[A[i]]) {
+				leaves[A[i]] = true;
+				steps--;
+				if (0 == steps) {
 					return(i);
 				}
 			}
