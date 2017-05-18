@@ -12,8 +12,7 @@ public class MaxCounters {
 		int[] B = new int[N];
 		for (int i : A) {
 			if (i <= N) {
-				B[i-1] = Math.max(max,  B[i-1]);
-				B[i-1]++;
+				B[i-1] = Math.max(max,  B[i-1]) + 1;
 				max = Math.max(max, B[i-1]);
 			}
 			else {
