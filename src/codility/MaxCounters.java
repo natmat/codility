@@ -9,6 +9,7 @@ public class MaxCounters {
 
 	public int[] solution(int N, int[] A) {
 		int max = 0;
+		int sumMax = 0;
 		int[] B = new int[N];
 		for (int i : A) {
 			if (i <= N) {
@@ -16,11 +17,16 @@ public class MaxCounters {
 				max = Math.max(max, B[i-1]);
 			}
 			else {
-				for (int j = 0 ; j < N ; j++) {
-					B[j] = max;
-				}
+				B = new int[N];
+				sumMax += max;
+				max = 0;
 			}
 		}
+		for (int i = 0 ; i < N ; i++) {
+			B[i] += sumMax;
+		}
+
+		// show(B);
 		return(B);
 	}
 	
