@@ -16,22 +16,18 @@ public class CountDiv {
 	}
 
 	public static int solution(int A, int B, int K) {
- 		int n = 0;
-		
-		if (A == 0) n++;
-		if (K>B) return(n);
-		
 		int first;
-		first = (int)(A/K)*K;
-		if (first < A) first += K;
-
-		if ((first >= A) && (first <= B)) n++;
-
-		int diff = B-first;
-		n += (int)(diff/K);
-
+		int diff;
+		first = A - (A%K);
+		diff = B-first;
+		
+		int n = 0;
+		if (first == A) n++;
+		n += (int)diff/K;
+		
 		return(n);
 	}
 }
+
 
 
