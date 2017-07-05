@@ -9,15 +9,15 @@ public class MinAvgTwoSlice {
 	}
 
 	public int solution(int[] A) {
-		double avg = 10000;
-		int i = 0;
-		for (int j = 0 ; j < A.length-1 ; j++) {
-			// System.out.println("avg="+avg+",this="+(A[j] + A[j+1])/2.0);
-			if ((A[j] + A[j+1]) < 2*avg) {
-				avg = (A[i] + A[j])/2.0;
-				i = j;
-			}            
+		int sum = A[0] + A[1];
+		int idx = 0;
+		
+		for (int i = 2 ; i < A.length ; i++) {
+			if (sum > A[i-1] + A[i]) {
+				sum = A[i-1] + A[i];
+				idx = i;
+			}
 		}
-		return(i);
+		return(idx);
 	}
 }
