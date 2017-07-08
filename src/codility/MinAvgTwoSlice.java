@@ -4,20 +4,23 @@ public class MinAvgTwoSlice {
 
 	public static void main (String[] args) {
 		MinAvgTwoSlice minAvgTwoSlice = new MinAvgTwoSlice();
-		int[] A = {4,2,2,5,1,5,8};
+		int[] A = {-3,-5,-8,-4,-10};
 		System.out.println(minAvgTwoSlice.solution(A));
 	}
 
 	public int solution(int[] A) {
-		int sum = A[0] + A[1];
-		int idx = 0;
-		
-		for (int i = 2 ; i < A.length ; i++) {
-			if (sum > A[i-1] + A[i]) {
-				sum = A[i-1] + A[i];
-				idx = i;
+		double a = 10000;
+		int i = 0;
+		for (int j = 0 ; j < A.length-1 ; j++) {
+			double tmp = a;
+			a = Math.min(a, (A[j] + A[j+1])/2.0);
+			if (j < A.length-2) {
+				a = Math.min(a, (A[j] + A[j+1] + A[j+2])/3.0);
+			}
+			if (a < tmp) {
+				i = j;
 			}
 		}
-		return(idx);
+		return(i);
 	}
 }
