@@ -35,20 +35,13 @@ class Solution {
 		}
 		// System.out.println();
 
-		for (int i = 0 ; i < M ; i++) {
-			// System.out.println(P[i] + " " + Q[i]);
-			for (int j = 0 ; j < 4 ; j++) {
-				// System.out.print(dna[j][P[i]] + " ");
-				if (P[i] == Q[i]) {
-					out[i] = getCode(S.charAt(P[i]))+1;
-					break;
-				}
-				else if (dna[j][P[i]] < dna[j][Q[i]]) {
+		for (int i = 0 ; i < M ; i++) { // PQ index
+			for (int j = 0 ; j < 4 ; j++) { // dna index
+				if ((getCode(S.charAt(P[i])) == j) || (dna[j][P[i]] < dna[j][Q[i]])) {
 					out[i] = j+1;
 					break;
 				}
 			}
-			// System.out.println();
 		}
 
 		return out;
@@ -66,3 +59,4 @@ class Solution {
 		return(code);
 	}
 }
+
