@@ -11,47 +11,57 @@ class Solution {
 		final int N = S.length();
 		final int M = P.length;
 
-		// Add the index for the ACGT       
-		ArrayList<Integer>[] indexList = (ArrayList<Integer>[]) new ArrayList[5];
-		for (int i = 0 ; i < 5 ; i++) {
-			indexList[i] = new ArrayList<Integer>();
+		int[] out = new int[M];
+
+		int[][] dna = new int[4][N];
+
+		// Init the first code - all other remain zero
+		dna[getCode(S.charAt(0))][0] = 1;
+
+		for (int i = 1 ; i < N ; i++) {           
+			// Loop for each dna ACGT
+			for (int j = 0 ; j < 4 ; j++) {               
+				dna[j][i] = dna[j][i-1];
+			}
+			dna[getCode(S.charAt(i))][i]++;
 		}
 
-		// Add the indicies
+		// Debug dna array
 		for (int i = 0 ; i < N ; i++) {
-			indexList[getCode(S.charAt(i))].add(i);
-		}   
+			for (int j = 0 ; j < 4 ; j++) {
+				// System.out.print(dna[j][i] + " ");
+			}
+			// System.out.println();
+		}
+		// System.out.println();
 
-		int[] out = new int[M];
-		// Loop for the PQ arrays
 		for (int i = 0 ; i < M ; i++) {
-			System.out.println("P[i]=" + P[i] + ",Q[i]=" + Q[i]);
-			// Loop for the indexLists
-			for (int j = 1 ; j < 5 ; j++) {
-				System.out.println("j=" + j);
-				// Loop for each element in the indexList
-				for (Integer il : indexList[j]) {
-					System.out.println("il=" + il);
-					if ((P[i] <= il) && (Q[i] >= il)) {
-						out[i] = j;
-						j = 5;
-						System.out.println("break");
-						break;
-					}
+			// System.out.println(P[i] + " " + Q[i]);
+			for (int j = 0 ; j < 4 ; j++) {
+				// System.out.print(dna[j][P[i]] + " ");
+				if (P[i] == Q[i]) {
+					out[i] = getCode(S.charAt(P[i]))+1;
+					break;
+				}
+				else if (dna[j][P[i]] < dna[j][Q[i]]) {
+					out[i] = j+1;
+					break;
 				}
 			}
+			// System.out.println();
 		}
 
 		return out;
 	}
 
+
 	private int getCode(char c) {
-		int code = 5;
+		int code = 4;
 		switch(c) {
-		case 'A' : code = 1; break;
-		case 'C' : code = 2; break;
-		case 'G' : code = 3; break;
-		case 'T' : code = 4; break;
+		case 'A' : code = 0; break;
+		case 'C' : code = 1; break;
+		case 'G' : code = 2; break;
+		case 'T' : code = 3; break;
 		}
 		return(code);
 	}
