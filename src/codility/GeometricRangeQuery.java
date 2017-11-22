@@ -1,47 +1,58 @@
 package codility;
 
-// you can also use imports, for example:
+//you can also use imports, for example:
 import java.util.*;
-import java.lang.String.*;
-import java.math.*;
 
-// you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
+//you can write to stdout for debugging purposes, e.g.
+//System.out.println("this is a debug message");
 
 class Solution {
 	public int[] solution(String S, int[] P, int[] Q) {
-		int M = P.length;
+		final int N = S.length();
+		final int M = P.length;
+
+		// Add the index for the ACGT       
+		ArrayList<Integer>[] indexList = (ArrayList<Integer>[]) new ArrayList[5];
+		for (int i = 0 ; i < 5 ; i++) {
+			indexList[i] = new ArrayList<Integer>();
+		}
+
+		// Add the indicies
+		for (int i = 0 ; i < N ; i++) {
+			indexList[getCode(S.charAt(i))].add(i);
+		}   
+
 		int[] out = new int[M];
-		Arrays.fill(out, 5);
-
-		int i, j, c;
-		for (i = 0 ; i < S.length() ; i++) {
-			c = getValue(S.charAt(i));
-			for (j = 0 ; j < M ; j++) {
-				if (out[j] == 1) {
-					continue;
-				}
-
-				if ((i >= P[j]) && (i <= Q[j])) {
-					if (c < out[j]) {
-						out[j] = c;
-					}
-					if (out[j] == 1) {
+		// Loop for the PQ arrays
+		for (int i = 0 ; i < M ; i++) {
+			System.out.println("P[i]=" + P[i] + ",Q[i]=" + Q[i]);
+			// Loop for the indexLists
+			for (int j = 1 ; j < 5 ; j++) {
+				System.out.println("j=" + j);
+				// Loop for each element in the indexList
+				for (Integer il : indexList[j]) {
+					System.out.println("il=" + il);
+					if ((P[i] <= il) && (Q[i] >= il)) {
+						out[i] = j;
+						j = 5;
+						System.out.println("break");
 						break;
 					}
 				}
-			}            
-		}        
-		return(out);
+			}
+		}
+
+		return out;
 	}
 
-	int getValue(char c) {
+	private int getCode(char c) {
+		int code = 5;
 		switch(c) {
-		case 'A': return 1;
-		case 'C': return 2;
-		case 'G': return 3;
-		case 'T': return 4;
+		case 'A' : code = 1; break;
+		case 'C' : code = 2; break;
+		case 'G' : code = 3; break;
+		case 'T' : code = 4; break;
 		}
-		return(5);
+		return(code);
 	}
 }
