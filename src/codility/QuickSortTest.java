@@ -12,26 +12,18 @@ public class QuickSortTest {
 	}
 
 	@Test
-	public void testNull() {
-		int[] array = null;
-		int[] expected = null;
-		QuickSort.sort(array);
-		assertArrayEquals(expected, array);
-	}
-
-	@Test
 	public void testOneElem() {
-		int[] array = {1};
-		int[] expected = array.clone();
-		QuickSort.sort(array);
-		assertArrayEquals(expected, array);
+		int[] actual = {1};
+		int[] expected = actual.clone();
+		QuickSort.quickSort(actual, 0, actual.length);
+		assertArrayEquals(expected, actual);
 	}
 
 	@Test
 	public void testTwoElem() {
-		int[] array = {2,1};
+		int[] actual = {2,1};
 		int[] expected = {1,2};
-		QuickSort.sort(array);
-		assertArrayEquals(expected, array);
+		QuickSort.quickSort(actual, 0, actual.length);
+		assertArrayEquals(expected, actual);
 	}
 }

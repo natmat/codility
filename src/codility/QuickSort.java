@@ -1,41 +1,42 @@
 package codility;
 
+import java.util.Arrays;
+
 public class QuickSort {
 	
 	public static void main(String[] args) {
-		int a[] = {1,5,4,2,3};
-		sort(a);
+//		int a[] = {1,5,4,2,3,6,9,8,7};
+//		int a[] = {1,3,2};
+		int[] a = { 9, 2, 4, 7, 3, 7, 10 };
+		quickSort(a, 0, a.length-1);
+		System.out.println("DONE");
 	}
 
-	public static void sort(int[] array) {
-		show(array);
-		if (array == null) {
-			return;
-		}
-
-		partition(array, 0, array.length-1);
-	}
-
-	static void partition(int[] a, int low, int high) {
-		show(a);
-		if (low == high) return;
+	static void quickSort(int[] arr, int low, int high) {
+		System.out.println("low=" + low + ",high=" + high);
+		if ((arr == null) || (low >= high) || (arr.length == 0)) return;
+		show(arr);
 		
 		int l = low;
 		int h = high;
-		int mid = (low + high)/2;
-		int p = a[mid];
+		int middle = low + (high - low)/2;
+		int p = arr[middle];
 
-		while ((l < mid) || (h > mid)) {
-			while (a[l] < p) l++;
-			while (a[h] > p) h--;
+		while (l <= h) {
+			while (arr[l] < p) l++;
+			while (arr[h] > p) h--;
 			
-			if ((l < mid) && (h > mid)) {
-				swap(a, l, h);
+			if (l <= h) {
+				swap(arr, l, h);
+				show(arr);
+				l++; 
+				h--;
 			}
 		}
 		
-		partition(a, low, l);
-		partition(a, h, high);
+		// Recurse
+		if (low < h) quickSort(arr, low, h);
+		if (high > l) quickSort(arr, l, high);
 	}
 
 	static void swap(int[] a, int f, int g) {
@@ -45,9 +46,6 @@ public class QuickSort {
 	}
 	
 	static void show(int[] a) {
-		for (int i : a) {
-			System.out.print(i + " ");
-		}
-		System.out.println("\n");
+		System.out.println(Arrays.toString(a));
 	}
 }
