@@ -11,12 +11,13 @@ public class Triangle {
 	public static int solution(int[] A) {
 		Arrays.sort(A);
 
-		if (A.length == 0) return(0);
-		if (A.length == 1) return(1);
+		if ((A == null) || (A.length < 3)) return(0); 
 
-		for (int p = 0 ; p < A.length-3 ; p++) {
+		for (int p = 0 ; p < A.length-2 ; p++) {
 			for (int q = p+1 ; q < A.length-1 ; q++) {
-				if (A[p] + A[q] > A[q+1]) { 
+				// Avoid overflow
+				final int r = q+1;
+				if (A[p] > A[r] - A[q]) { 
 					return(1);
 				}
 			}            
