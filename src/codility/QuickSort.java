@@ -14,7 +14,7 @@ public class QuickSort {
 
 	static void quickSort(int[] arr, int low, int high) {
 		System.out.println("low=" + low + ",high=" + high);
-		if ((arr == null) || (low >= high) || (arr.length == 0)) return;
+		if ((arr == null) || (low >= high) || (arr.length < 2)) return;
 		show(arr);
 		
 		int l = low;
