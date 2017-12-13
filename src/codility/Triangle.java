@@ -9,17 +9,19 @@ public class Triangle {
 	}
 
 	public static int solution(int[] A) {
-		if (A == null || A.length <3) return(0);
-
 		Arrays.sort(A);
-		for (int p = 0 ; p < A.length-2 ; p++) {
+
+		if (A.length == 0) return(0);
+		if (A.length == 1) return(1);
+
+		for (int p = 0 ; p < A.length-3 ; p++) {
 			for (int q = p+1 ; q < A.length-1 ; q++) {
-				int r = q+1;
-				long sum = A[p]+A[q];
-				if (sum > A[r]) 
+				if (A[p] + A[q] > A[q+1]) { 
 					return(1);
-			}
+				}
+			}            
 		}
-		return(0);
+		return(0);        
 	}
 }
+
