@@ -1,12 +1,9 @@
 package codility;
 
-//you can also use imports, for example:
-import java.util.*;
-
 //you can write to stdout for debugging purposes, e.g.
 //System.out.println("this is a debug message");
 
-class Solution {
+class GeometricRangeQuery {
 	public int[] solution(String S, int[] P, int[] Q) {
 		final int N = S.length();
 		final int M = P.length;
