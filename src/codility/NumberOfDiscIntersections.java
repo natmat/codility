@@ -11,8 +11,10 @@ class NumberOfDiscIntersections {
 	}
 
 	public static void main(String args[]) {
-		int actuals[] = {1,5,2,1,4,0};
-		//		int actuals[] = {1,1,1};
+//		int actuals[] = {1,5,2,1,4,0};
+//		int actuals[] = {1,1,1};
+		int actuals[] = {1, 2147483647, 0};
+		
 		int expecteds = solution(actuals);
 		System.out.println(Arrays.toString(actuals) + "=" + expecteds);
 	}
@@ -23,9 +25,9 @@ class NumberOfDiscIntersections {
 		int sum = 0;
 		Pair events[] = new Pair[A.length];
 		for (int i = 0 ; i < A.length ; i++) {
-			int start = Math.max(0, i-A[i]);
-			int stop  = Math.min(A.length-1, i+A[i]);
-			events[i] = new NumberOfDiscIntersections.Pair(start, stop);
+			long start = Math.max(0, i-A[i]);
+			long stop  = Math.min(A.length-1, i+A[i]);
+			events[i] = new NumberOfDiscIntersections.Pair((int)start, (int)stop);
 		}
 		//	 		PrintPairs(events);
 		Arrays.sort(events);
