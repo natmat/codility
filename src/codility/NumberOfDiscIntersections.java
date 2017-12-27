@@ -12,27 +12,30 @@ class NumberOfDiscIntersections {
 
 	public static void main(String args[]) {
 		int actuals[] = {1,5,2,1,4,0};
+		//		int actuals[] = {1,1,1};
 		int expecteds = solution(actuals);
 		System.out.println(Arrays.toString(actuals) + "=" + expecteds);
 	}
 
 	public static int solution(int[] A) {
+		if (A.length < 2) return(0);
+
 		int sum = 0;
 		Pair events[] = new Pair[A.length];
 		for (int i = 0 ; i < A.length ; i++) {
 			int start = Math.max(0, i-A[i]);
-			int stop  = Math.min(A.length, i+A[i]);
+			int stop  = Math.min(A.length-1, i+A[i]);
 			events[i] = new NumberOfDiscIntersections.Pair(start, stop);
 		}
-		PrintPairs(events);
+		//	 		PrintPairs(events);
 		Arrays.sort(events);
-		PrintPairs(events);
+		//	 		PrintPairs(events);
 
 		int count[] = new int[A.length];
 		for (int i = 0 ; i < events.length ; i++) {
 			Pair p = events[i];
 			sum += count[p.start];
-			for (int j = p.start ; j < p.stop ; j++) {
+			for (int j = p.start ; j <= p.stop ; j++) {
 				count[j] += 1;
 			}
 		}
