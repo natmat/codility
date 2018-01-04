@@ -22,7 +22,7 @@ class NumberOfDiscIntersections {
 	public static int solution(int[] A) {
 		if (A.length < 2) return(0);
 
-		int sum = 0;
+		// Create and array of start/stop pairs 
 		Pair events[] = new Pair[A.length];
 		for (int i = 0 ; i < A.length ; i++) {
 			long start = Math.max(0, i-A[i]);
@@ -33,6 +33,7 @@ class NumberOfDiscIntersections {
 		Arrays.sort(events);
 		//	 		PrintPairs(events);
 
+		int sum = 0;
 		int count[] = new int[A.length];
 		for (int i = 0 ; i < events.length ; i++) {
 			Pair p = events[i];
